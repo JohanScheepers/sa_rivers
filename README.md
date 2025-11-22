@@ -1,5 +1,7 @@
 # SA Rivers IoT Monitoring
 
+![SA Rivers Logo](assets/logo.png)
+
 A comprehensive IoT solution for monitoring river levels using LoRaWAN sensors, Node-RED, Firebase, and Flutter.
 
 ## Overview
