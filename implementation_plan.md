@@ -1,71 +1,53 @@
 # Implementation Plan - SA Rivers IoT
 
-This project aims to build a system for monitoring river levels using LoRaWAN sensors. Data flows from sensors to Node-RED, is enriched with location data from a SQL database, stored in Firebase, and visualized in a Flutter mobile app.
+## Goal Description
+Initialize the Flutter application and implement Firebase Authentication with email verification. The app will allow users to sign up and log in using their email and password. Access to the main dashboard will be restricted to verified users.
 
 ## User Review Required
 > [!IMPORTANT]
-> **Node-RED & SQL**: I will provide the *logic* and *schema* for the Node-RED flow and SQL table, but I cannot execute Node-RED flows directly. You will need to implement the flow in your Node-RED instance based on the design provided.
-> **Firebase**: I will attempt to set up the Firebase project using the Firebase MCP. If that fails or requires specific permissions, I will need your assistance.
+> **Firebase Setup**: The user needs to provide the `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) files after I add the dependencies, or I can use `flutterfire configure` if they have the CLI set up. For now, I will assume manual setup or mock it if needed, but the code will be ready for real Firebase.
 
-## Proposed Architecture
+## Proposed Changes
 
-### Data Flow
-1.  **Sensor (LoRaWAN)**: Sends `{ field1: bat, field2: range, field3: interval }`.
-2.  **Node-RED**:
-    *   Receives payload.
-    *   Extracts `eui` (Sensor ID).
-    *   Queries SQL DB: `SELECT lat, lng, name FROM sensor_locations WHERE eui = ?`.
-    *   Constructs final object:
-        ```json
-        {
-          "eui": "...",
-          "battery": field1,
-          "level": field2, // range
-          "interval": field3,
-          "location": { "lat": ..., "lng": ... },
-          "name": "...",
-          "timestamp": <server_timestamp>
-        }
-        ```
-    *   Pushes to Firebase Firestore collection `readings` (or similar).
+### Flutter App (`app/`)
 
-### Component: Backend (Node-RED & SQL)
-#### [NEW] `back_end/node_red_flow.json`
-*   A JSON export or description of the Node-RED flow.
-*   **Logic**:
-    *   Input Node: MQTT/HTTP (depending on LoRa server).
-    *   Function Node: Parse payload.
-    *   SQL Node: Query location.
-    *   Firebase Node: Write to Firestore.
+#### [NEW] Dependencies
+- `firebase_core`
+- `firebase_auth`
+- `flutter_signals` (State Management)
+- `go_router` (Navigation)
 
-#### [NEW] `back_end/sql_schema.sql`
-*   Schema for the `sensor_locations` table.
+#### [NEW] `lib/services/auth_service.dart`
+- `AuthService` class:
+    - `Stream<User?> get authStateChanges`
+    - `Future<void> signIn(String email, String password)`
+    - `Future<void> signUp(String email, String password)`
+    - `Future<void> signOut()`
+    - `Future<void> sendEmailVerification()`
+    - `bool get isEmailVerified`
 
-### Component: Flutter App (`app/`)
-#### [NEW] `app/lib/main.dart`
-*   Entry point.
-*   Setup `flutter_signals` and `go_router`.
-*   Initialize Firebase.
-*   **Dependencies**: `firebase_core`, `cloud_firestore`, `flutter_signals`, `go_router`, `flutter_map`, `latlong2`, `fl_chart`, `intl`.
+#### [NEW] `lib/features/auth/`
+- `login_screen.dart`: UI for logging in.
+- `register_screen.dart`: UI for registration.
+- `verify_email_screen.dart`: UI prompting user to verify email.
 
-#### [NEW] `app/lib/features/dashboard/`
-*   **Screens**:
-    *   `DashboardScreen`: Toggle between List and Map view.
-    *   `MapScreen`: Displays sensors as markers on a map (using `flutter_map`). Tapping a marker shows a summary popup (Last Reading).
-    *   `SensorDetailsScreen`: Displays current level, battery, and a historical graph.
-*   **Widgets**:
-    *   `SensorCard`: Summary card for list view.
-    *   `HistoryGraph`: Line chart (using `fl_chart`) showing data over selected periods (24h, 7d, 30d, etc.).
-    *   `TimePeriodSelector`: Dropdown/Segmented control for graph intervals.
-*   **Logic**:
-    *   `SensorSignal`: Listen to Firestore stream.
-    *   `HistorySignal`: Fetch historical data based on selected time period.
+#### [NEW] `lib/main.dart`
+- Initialize Firebase.
+- Setup `GoRouter` with redirects based on auth state.
+
+### Documentation
+- [x] Update `README.md` with sensor image and Auth details.
+- [x] Update `task.md` with Auth tasks.
 
 ## Verification Plan
 
 ### Automated Tests
-*   **Flutter**: Widget tests for `SensorCard` to ensure it displays data correctly.
+- Widget tests for Login/Register screens.
 
 ### Manual Verification
-1.  **Mock Data Push**: Manually insert a document into Firestore (simulating Node-RED) and verify it appears in the Flutter app.
-2.  **App UI**: Check that the dashboard updates in real-time when data changes in Firebase.
+1.  Start the app.
+2.  Verify redirection to Login screen.
+3.  Register a new user.
+4.  Verify "Verify Email" screen appears.
+5.  (Mock/Real) Verify email link click.
+6.  Verify redirection to Dashboard.

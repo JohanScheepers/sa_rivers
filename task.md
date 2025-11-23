@@ -16,11 +16,13 @@
         - [ ] Output: Push to Firebase <!-- id: 7 -->
 
 - [ ] **Flutter App Development**
-    - [ ] Initialize Flutter App in `app` directory <!-- id: 8 -->
-    - [ ] Add Dependencies (`firebase_core`, `cloud_firestore`, `flutter_signals`, `go_router`, `flutter_map`, `fl_chart`) <!-- id: 9 -->
+    - [x] Initialize Flutter App in `app` directory <!-- id: 8 -->
+    - [ ] Add Dependencies (`firebase_core`, `firebase_auth`, `cloud_firestore`, `flutter_signals`, `go_router`, `flutter_map`, `fl_chart`) <!-- id: 9 -->
     - [ ] Create Basic Layout & Navigation <!-- id: 10 -->
-    - [ ] Implement Firebase Data Integration <!-- id: 11 -->
-    - [ ] Create Dashboard UI (List & Map View) <!-- id: 12 -->
+    - [ ] Implement Firebase Auth Service (Email/Password + Verification) <!-- id: 11 -->
+    - [ ] Create Login & Registration Screens <!-- id: 11.5 -->
+    - [ ] Implement Firebase Data Integration <!-- id: 12 -->
+    - [ ] Create Dashboard UI (List & Map View) <!-- id: 13 -->
     - [ ] Create Sensor Details UI (Graph & Time Selection) <!-- id: 14 -->
 
 - [ ] **Verification**

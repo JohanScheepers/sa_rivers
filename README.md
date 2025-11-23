@@ -4,11 +4,18 @@
 
 A comprehensive IoT solution for monitoring river levels using LoRaWAN sensors, Node-RED, Firebase, and Flutter.
 
+## App Preview
+![App Screenshot](assets/app_screenshot.png)
+
+## Sensor Device
+![Sensor Device](assets/sensor.jfif)
+
 ## Overview
 
-This project collects data from remote sensors (battery, water level, range) via LoRaWAN. The data is processed by a Node-RED backend, enriched with geolocation data from a SQL database, and stored in Firebase Firestore. A Flutter mobile application provides real-time visualization of river levels, historical trends, and sensor locations on a map.
+This project collects data from remote sensors (battery, water level, range) via LoRaWAN. The data is processed by a Node-RED backend, enriched with geolocation data from a SQL database, and stored in Firebase Firestore. A Flutter mobile application provides real-time visualization of river levels, historical trends, and sensor locations on a map. Access to the application is secured via Firebase Authentication.
 
 ## Architecture
+![Data Flow Diagram](assets/data_flow_diagram.png)
 
 1.  **Sensors**: LoRaWAN devices sending `bat`, `range`, and `interval`.
 2.  **Backend (Node-RED)**:
