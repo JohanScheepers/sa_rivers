@@ -14,6 +14,11 @@
         - [ ] Input: LoRaWAN Uplink <!-- id: 5 -->
         - [ ] Process: Lookup Location via EUI (SQL) <!-- id: 6 -->
         - [ ] Output: Push to Firebase <!-- id: 7 -->
+    - [ ] **Node-RED Admin Dashboard**
+        - [x] Flow: Create SQL Table (`sensor_locations`) <!-- id: 4.1 -->
+        - [x] UI: Form to Add/Edit Sensor (EUI, Name, Lat, Lng) <!-- id: 4.2 -->
+        - [x] UI: Table to List All Sensors <!-- id: 4.3 -->
+        - [x] UI: Map View of Sensors (Centered on SA) <!-- id: 4.4 -->
 
 - [ ] **Flutter App Development**
     - [x] Initialize Flutter App in `app` directory <!-- id: 8 -->
@@ -24,6 +29,12 @@
     - [ ] Implement Firebase Data Integration <!-- id: 12 -->
     - [ ] Create Dashboard UI (List & Map View) <!-- id: 13 -->
     - [ ] Create Sensor Details UI (Graph & Time Selection) <!-- id: 14 -->
+
+- [ ] **Push Notifications**
+    - [ ] Define Alert Config in Firestore (Thresholds) <!-- id: 15 -->
+    - [ ] Setup Firebase Cloud Messaging (FCM) <!-- id: 16 -->
+    - [ ] Implement Firebase Cloud Function (Trigger on new reading -> Check Delta -> Send FCM) <!-- id: 17 -->
+    - [ ] Implement Flutter FCM Receiver & Permissions <!-- id: 18 -->
 
 - [ ] **Verification**
     - [ ] Verify Data Flow (Mock Node-RED push -> Firebase -> App) <!-- id: 13 -->

@@ -41,3 +41,6 @@ firebase-debug.log
 
 # Environment variables
 .env
+
+# Private user files
+private/

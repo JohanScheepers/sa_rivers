@@ -30,6 +30,14 @@ This project collects data from remote sensors (battery, water level, range) via
     *   **Map**: Interactive map showing sensor locations.
     *   **Details**: Historical graphs (24h, 7d, 30d) and current status.
 
+## Sensor Management (Node-RED)
+![Sensor Management](assets/sensor_managment.PNG)
+A dedicated Admin Dashboard is available in Node-RED for managing the sensor network.
+*   **Add/Edit Sensors**: Form to register new sensors or update existing ones (EUI, Name, Location).
+*   **Sensor List**: View all registered sensors in a sortable table.
+*   **Map View**: Visual overview of all sensor locations on an interactive map centered on South Africa.
+*   **Database Management**: Tools to initialize and manage the SQL database table.
+
 ## Tech Stack
 
 *   **Mobile App**: Flutter (Dart)
