@@ -5,7 +5,7 @@
 A comprehensive IoT solution for monitoring river levels using LoRaWAN sensors, Node-RED, Firebase, and Flutter.
 
 ## App Preview
-![App Screenshot](assets/app_screenshot.png)
+![App Screenshot](assets/app_screenshot.jpg)
 
 ## Sensor Device
 ![Sensor Device](assets/sensor.jfif)
