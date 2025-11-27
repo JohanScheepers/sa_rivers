@@ -49,3 +49,7 @@ private/
 google-services.json
 lib/firebase_options.dart
 
+# Project folders
+app/
+back_end/
+
