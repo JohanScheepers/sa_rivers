@@ -44,3 +44,8 @@ firebase-debug.log
 
 # Private user files
 private/
+
+# Firebase
+google-services.json
+lib/firebase_options.dart
+
