@@ -1,7 +1,7 @@
 # Task List - SA Rivers IoT Project
 
 - [x] **Project Initialization**
-    - [x] Create project planning artifacts (`task.md`, `implementation_plan.md`) <!-- id: 0 -->
+    - [x] Create project planning artifacts (`task.md`, `implementation_plan.md`, `PRD.md`) <!-- id: 0 -->
     - [x] Verify existing project structure (`app` and `back_end`) <!-- id: 1 -->
     - [x] Create project `README.md` <!-- id: 1.5 -->
     - [x] Initialize Git repository and set remote <!-- id: 1.6 -->
