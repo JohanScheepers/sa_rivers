@@ -41,7 +41,7 @@ The system utilizes a hybrid architecture combining LoRaWAN for long-range senso
     - **List View**: Display all monitored sensors with current status (Level, Battery, Last Updated).
     - **Map View**: Interactive map showing sensor locations with status markers.
 - **Sensor Details**:
-    - **Graph**: Interactive line chart showing water level history (e.g., last 24h, 7d).
+    - **Graph**: Interactive line chart showing water level history with selectable time ranges (24h, 7d, 30d).
     - **Metadata**: Display sensor name, location, and device details.
 - **Settings & Alerts**:
     - User-configurable `delta_threshold` for alerts (per sensor).

@@ -51,5 +51,6 @@ lib/firebase_options.dart
 
 # Project folders
 app/
+!app/lib/
 back_end/
 
